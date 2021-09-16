@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import NameCard from './components/NameCard';
+import LikeButton from './components/LikeButton';
+import DigitalClock from './components/DigitalClock';
+
 const tags = ['恐龙','足球小子']
 
 function App() {
@@ -21,6 +24,8 @@ function App() {
         </a>
       </header>
       <NameCard name="viking" number={123456} isHuman tags={tags}/>
+      <LikeButton />
+      <DigitalClock />
     </div>
   );
 }
