@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import NameCard from './components/NameCard';
+const tags = ['恐龙','足球小子']
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <NameCard name="viking" number={123456} isHuman tags={tags}/>
     </div>
   );
 }
