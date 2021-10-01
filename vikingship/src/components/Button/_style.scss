@@ -50,18 +50,17 @@
     text-decoration: $link-decoration;
     box-shadow: none;
     &:hover {
-      color: $btn-link-hover-color;
-      text-decoration: $link-hover-decoration; 
+        color: $btn-link-hover-color;
+        text-decoration: $link-hover-decoration; 
     }
     &:focus,
     &.focus {
-      text-decoration: $link-hover-decoration;
-      box-shadow: none;
+        text-decoration: $link-hover-decoration;
+        box-shadow: none;
     }
     &:disabled,
     &.disabled {
-      color: $btn-link-disabled-color;
-      pointer-events: none;
+        color: $btn-link-disabled-color;
+        pointer-events: none;
     }
 }
-  

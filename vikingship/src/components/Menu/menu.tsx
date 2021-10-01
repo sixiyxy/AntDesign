@@ -1,6 +1,6 @@
 import React, { useState, createContext } from "react";
 import classNames from "classnames";
-import MenuItem, { MenuItemProps } from "./menuItem";
+import { MenuItemProps } from "./menuItem";
 
 type MenuMode = 'horizontal' | 'vertical'
 type SelectCallback = (selectedIndex: number) => void
@@ -16,6 +16,7 @@ export interface MenuProps {
 interface IMenuContext {
     index: number;
     onSelect?: SelectCallback;
+    mode?: MenuMode
 }
 
 export const MenuContext = createContext<IMenuContext>({index: 0})
@@ -37,6 +38,7 @@ const Menu: React.FC<MenuProps> = (props) => {
     const passedContext: IMenuContext = {
         index: currentActive ? currentActive : 0,
         onSelect: handleClick,
+        mode : mode,
     }
     
     const renderChildren = () => {
@@ -56,7 +58,7 @@ const Menu: React.FC<MenuProps> = (props) => {
     return (
         <ul className = {classes} style={style}>
             <MenuContext.Provider value={passedContext}>
-                {children}
+                {renderChildren()}
             </MenuContext.Provider>
             
         </ul>
