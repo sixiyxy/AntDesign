@@ -16,7 +16,7 @@ function App() {
       <header className="App-header">
         <Icon icon="coffee" theme="primary" size="10x"/>
         <FontAwesomeIcon icon="arrow-down"/>
-        <Menu defaultIndex={'0'} onSelect={(index) => {alert(index)}} mode="vertical" defaultOpenSubMenus = {['2']} >
+        <Menu defaultIndex={'0'} onSelect={(index) => {alert(index)}} mode="horizontal" defaultOpenSubMenus = {['2']} >
           <MenuItem >
             cool link
           </MenuItem>
