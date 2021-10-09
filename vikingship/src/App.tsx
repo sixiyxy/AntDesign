@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button, { ButtonType, ButtonSize } from './components/Button/button';
+import Button from './components/Button/button';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
 import Icon from './components/Icon/icon';
+import Transition from './components/Transition/transition'
 
 library.add( fas )
 
 function App() {
+  const [ show, setShow ] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
@@ -35,12 +37,30 @@ function App() {
             cool link3
           </MenuItem>
       </Menu>
+        <Button size="lg" onClick={() => { setShow(!show)}}> Toggle </Button>
+        <Transition
+          in={show}
+          timeout={300}
+          animation = 'zoom-in-left'
+        >
+          <p>
+            Edit <code>src/App.tsx</code> and save to reload.
+          </p>
+        </Transition>
+        <Transition
+          in={show}
+          timeout={300}
+          animation = 'zoom-in-left'
+          wrapper
+        >
+          <Button btnType={'primary'} size={'lg'}> Large Primary </Button>
+        </Transition>
         <Button autoFocus>Hello</Button>
-        <Button btnType={ButtonType.Default} disabled> Disabled Button </Button>
-        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> Large Primary </Button>
-        <Button btnType={ButtonType.Danger} size={ButtonSize.Small}> Small Danger </Button>
-        <Button btnType={ButtonType.Link} href="http://www.baidu.com"> Baidu Link </Button>
-        <Button btnType={ButtonType.Link} href="http://www.baidu.com" disabled> Disabled Link </Button>
+        <Button btnType={'default'} disabled> Disabled Button </Button>
+        <Button btnType={'primary'} size={'lg'}> Large Primary </Button>
+        <Button btnType={'danger'} size={'sm'}> Small Danger </Button>
+        <Button btnType={'link'} href="http://www.baidu.com"> Baidu Link </Button>
+        <Button btnType={'link'} href="http://www.baidu.com" disabled> Disabled Link </Button>
         <p> 
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
