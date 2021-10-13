@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import React, { HtmlHTMLAttributes } from 'react'
+import React, { HtmlHTMLAttributes, ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from 'react'
 import classNames from 'classnames'
 
 // export enum ButtonSize {
@@ -25,11 +25,11 @@ interface BaseButtonProps {
     children: React.ReactNode;
     href?: string;
 }
-type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
 
-const Button: React.FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = (props) => {
     const {
         btnType,
         className,
@@ -77,4 +77,4 @@ Button.defaultProps = {
     btnType: 'default'
 }
 
-export default Button
+export default Button;
