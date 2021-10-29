@@ -1,4 +1,4 @@
-import React, { HtmlHTMLAttributes, ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from 'react'
+import React, {  ButtonHTMLAttributes, AnchorHTMLAttributes, FC } from 'react'
 import classNames from 'classnames'
 
 // export enum ButtonSize {
