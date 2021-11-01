@@ -20,7 +20,7 @@ const SimpleUpload = () => {
         <Upload
             action = "https://jsonplaceholder.typicode.com/posts/"
             onChange = {action('changed')}
-            beforeUpload = {filePromise}
+            
         />
     )
 }
