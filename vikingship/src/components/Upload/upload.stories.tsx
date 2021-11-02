@@ -28,6 +28,12 @@ const SimpleUpload = () => {
             onChange = {action('changed')}
             defaultFileList = {defaultFileList}
             onRemove={action('removed')}
+            name="fileName"
+            data = {{'key' : 'value'}}
+            headers = {{'X-Powered-By': 'vikingship'}} 
+            accept=".jpg"
+            multiple
+            drag
         />
     )
 }
