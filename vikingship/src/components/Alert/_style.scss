@@ -1,0 +1,65 @@
+.alert {
+    position: relative;
+    display: block;
+    font-weight: $alert-font-weight;
+    line-height: $alert-line-height;
+    color: $body-color;
+    width: 50%;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    text-align: left;
+    vertical-align: middle;
+    background-image: none;
+    border: $alert-border-width solid transparent;
+    @include alert-size( $alert-padding-y, $alert-padding-x, $alert-font-size, $border-radius);
+    box-shadow: $alert-box-shadow;
+    cursor: pointer;
+    .icon-wrapper {
+        position: absolute;
+        height: 100%;
+        width: 35px;
+        justify-content: center;
+        color: $white;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        svg {
+          color: $white;
+          pointer-events: none;
+        }
+    }
+    .alert-title{
+        position: relative;
+        display: block;
+        text-align: left;
+        font-size: $alert-title-font-size;
+    }
+    
+}
+
+
+
+.alert-lg{
+    @include button-size( $alert-padding-y-lg, $alert-padding-x-lg, $alert-font-size-lg, $border-radius-lg);
+}
+
+.alert-sm{
+    @include button-size( $alert-padding-y-sm, $alert-padding-x-sm, $alert-font-size-sm, $border-radius-sm);
+}
+
+.alert-danger {
+    @include alert-style($danger, $danger, $white)
+}
+
+.alert-success{
+    @include alert-style($success, $success, $white)
+}
+
+.alert-default {
+    @include alert-style($primary, $primary, $white)
+}
+
+.alert-warning {
+    @include alert-style($warning, $primary, $white)
+}

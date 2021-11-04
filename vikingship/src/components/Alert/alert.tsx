@@ -11,7 +11,7 @@ interface AlertProps {
     alertType?: AlertType;
     closeable?: boolean;
     title?: string;
-    alertText: string;
+    alertText?: string;
 }
 
 export const Alert: FC<AlertProps> = (props) => {
@@ -30,8 +30,8 @@ export const Alert: FC<AlertProps> = (props) => {
         [`alert-${size}`]: size,
         'closeable': closeable
     })
-    const handleClose = () => {
-        
+    const handleClose = (e: React.MouseEvent) => {
+        e.target.parentNode.style.display="none";
     }
     return (
         <div
@@ -39,14 +39,20 @@ export const Alert: FC<AlertProps> = (props) => {
             {...restProps}
         >
             {title? 
-                <div
+                <span
                     className="alert-title"            
-                >{title}</div> : null
+                >{title}</span> : null
         }
-            <div className="alert-innertext">{alertText}</div>
-            {closeable && <div className="icon-wrapper"><Icon icon="times" onClick={() => { handleClose() }}/></div>}
+            {closeable && <span className="icon-wrapper" onClick={handleClose}><Icon icon="times" /></span>}
+            <span className="alert-innertext">{alertText}</span>
+            
         </div>
     )
 }
 
+Alert.defaultProps = {
+    closeable: false,
+    alertType: 'default',
+    alertText: 'default alert'
+}
 export default Alert;
