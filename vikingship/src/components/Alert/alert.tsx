@@ -1,5 +1,6 @@
+import  Transition  from '../Transition/transition';
 import classNames from "classnames";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Icon from '../Icon/icon'
 
 export type AlertSize = 'lg' | 'sm'
@@ -25,28 +26,36 @@ export const Alert: FC<AlertProps> = (props) => {
         children,
         ...restProps
     } = props
+    const [ visiable,setVisiable ] = useState(true);
     const classes = classNames('alert', className, {
         [`alert-${alertType}`]: alertType,
         [`alert-${size}`]: size,
         'closeable': closeable
     })
-    const handleClose = (e: React.MouseEvent) => {
-        e.target.parentNode.style.display="none";
+    const handleClose = () => {
+        //e.target.parentNode.style.display="none";
+        setVisiable(false);
     }
     return (
-        <div
-            className = {classes}
-            {...restProps}
+        visiable ?
+        <Transition
+            in = {visiable}
+            timeout={300}
+            animation="zoom-in-top"
         >
-            {title? 
-                <span
-                    className="alert-title"            
-                >{title}</span> : null
-        }
-            {closeable && <span className="icon-wrapper" onClick={handleClose}><Icon icon="times" /></span>}
-            <span className="alert-innertext">{alertText}</span>
-            
-        </div>
+            <div
+                className = {classes}
+                {...restProps}
+            >
+                {title? 
+                    <span
+                        className="alert-title"            
+                    >{title}</span> : null
+                }
+                {closeable && <span className="icon-wrapper" onClick={handleClose}><Icon icon="times" /></span>}
+                <span className="alert-innertext">{alertText}</span>
+            </div>  
+        </Transition> : null 
     )
 }
 
